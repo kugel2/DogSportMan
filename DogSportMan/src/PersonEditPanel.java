@@ -1,13 +1,6 @@
 import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JTextPane;
-import java.awt.BorderLayout;
-import javax.swing.JTextArea;
-import java.awt.Color;
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.FlowLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -20,6 +13,10 @@ import javax.swing.ButtonGroup;
 
 
 public class PersonEditPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8424709019574028587L;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField txtHh;
