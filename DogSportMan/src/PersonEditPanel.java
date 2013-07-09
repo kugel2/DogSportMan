@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -40,6 +41,8 @@ public class PersonEditPanel extends JPanel {
 
 		JFrame f = new JFrame();
 		f.getContentPane().add(new PersonEditPanel());
+		f.setMinimumSize(new Dimension(500, 400));
+		
 		f.setVisible(true);
 		while (true) {
 		}
@@ -48,6 +51,8 @@ public class PersonEditPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public PersonEditPanel() {
+		
+		this.setMinimumSize(new Dimension(500, 400));
 		
 		JLabel lblName = new JLabel("Name");
 		
@@ -62,28 +67,12 @@ public class PersonEditPanel extends JPanel {
 		JLabel lblGeburtsdatum = new JLabel("Geburtsdatum");
 		
 		formattedTextField = new JFormattedTextField(new SimpleDateFormat("dd.MM.y"));
-//		formattedTextField.addPropertyChangeListener(new PropertyChangeListener() {
-//			public void propertyChange(PropertyChangeEvent arg0) {
-//				Date now = new Date();
-//				Date bday = (Date) formattedTextField.getValue();
-//				
-//				
-//				
-//				System.out.println(now);
-//				if (bday == null) {
-//					return;
-//				}
-//				System.out.println(bday);
-//				int diff = now.getYear() - bday.getYear();
-//				System.out.println(now.getYear() - bday.getYear());
-//				
-//				lblAlter.setText(Integer.toString(diff));
-//			}
-//		});
-		formattedTextField.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		formattedTextField.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
 				Date now = new Date();
 				Date bday = (Date) formattedTextField.getValue();
+				
+				
 				
 				System.out.println(now);
 				if (bday == null) {
@@ -96,6 +85,22 @@ public class PersonEditPanel extends JPanel {
 				lblAlter.setText(Integer.toString(diff));
 			}
 		});
+//		formattedTextField.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				Date now = new Date();
+//				Date bday = (Date) formattedTextField.getValue();
+//				
+//				System.out.println(now);
+//				if (bday == null) {
+//					return;
+//				}
+//				System.out.println(bday);
+//				int diff = now.getYear() - bday.getYear();
+//				System.out.println(now.getYear() - bday.getYear());
+//				
+//				lblAlter.setText(Integer.toString(diff));
+//			}
+//		});
 
 		formattedTextField.setToolTipText("Geburtsdatum eingeben!");
 		
@@ -143,14 +148,6 @@ public class PersonEditPanel extends JPanel {
 		comboBox_1.setEditable(true);
 		
 		lblAlter = new JLabel("Hans ist doof!");
-		
-		JButton btnTest = new JButton("test");
-		btnTest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("???");
-				lblAlter.setText("stimmt nšd");
-			}
-		});
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -164,27 +161,38 @@ public class PersonEditPanel extends JPanel {
 							.addComponent(lblOrt)
 							.addPreferredGap(ComponentPlacement.RELATED, 424, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblVerein)
+							.addPreferredGap(ComponentPlacement.RELATED, 434, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblHunde)
+							.addGap(70)
+							.addComponent(list, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblGeburtsdatum)
 								.addComponent(lblTelefonnummer)
 								.addComponent(lblVorname)
 								.addComponent(lblName)
-								.addComponent(lblGeschlecht))
+								.addComponent(lblGeschlecht)
+								.addComponent(lblFunktionen))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(chckbxRichter)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(chckbxPrfungsleiter)
+									.addGap(160))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(formattedTextField, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnTest)
-									.addPreferredGap(ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
 									.addComponent(lblAlter))
-								.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-								.addComponent(formattedTextField_1, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-								.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(textField_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+								.addComponent(formattedTextField_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 									.addComponent(txtHh, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
+								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 									.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(comboBox, 0, 288, Short.MAX_VALUE))
@@ -192,22 +200,8 @@ public class PersonEditPanel extends JPanel {
 									.addComponent(rdbtnMann)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addComponent(rdbtnFrau))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(chckbxRichter)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(chckbxPrfungsleiter))
-								.addComponent(comboBox_1, 0, 362, Short.MAX_VALUE)
-								.addComponent(textField, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblFunktionen)
-							.addPreferredGap(ComponentPlacement.RELATED, 402, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblVerein)
-							.addPreferredGap(ComponentPlacement.RELATED, 434, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblHunde)
-							.addGap(70)
-							.addComponent(list, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)))
+								.addComponent(comboBox_1, Alignment.TRAILING, 0, 362, Short.MAX_VALUE)
+								.addComponent(textField, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -215,9 +209,9 @@ public class PersonEditPanel extends JPanel {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblGeschlecht)
 						.addComponent(rdbtnMann)
-						.addComponent(rdbtnFrau)
-						.addComponent(lblGeschlecht))
+						.addComponent(rdbtnFrau))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblName)
@@ -229,9 +223,8 @@ public class PersonEditPanel extends JPanel {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblGeburtsdatum)
-						.addComponent(lblAlter)
 						.addComponent(formattedTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnTest))
+						.addComponent(lblAlter))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblTelefonnummer)
@@ -257,7 +250,7 @@ public class PersonEditPanel extends JPanel {
 						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(list, GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+						.addComponent(list, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
 						.addComponent(lblHunde))
 					.addContainerGap())
 		);
