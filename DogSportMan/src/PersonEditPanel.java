@@ -147,7 +147,7 @@ public class PersonEditPanel extends JPanel {
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setEditable(true);
 		
-		lblAlter = new JLabel("Hans ist doof!");
+		lblAlter = new JLabel("Hans ist doof.");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
