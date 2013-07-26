@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
 
 
 public class ResultEditPanel extends JPanel {
@@ -25,13 +27,13 @@ public class ResultEditPanel extends JPanel {
 	private JLabel lblNewLabel;
 	private JLabel lblFehler;
 	private JTextField txtFehlerSlalom;
-	private JCheckBox chckbxOhneLeine;
+	private JCheckBox chckbxOhneLeineSlalom;
 	private JLabel lblHrden;
 	private JLabel lblZeit;
-	private JTextField txtZeitHrden;
+	private JTextField txtZeitHuerden;
 	private JLabel lblFehler_1;
-	private JTextField txtFehlerHrden;
-	private JCheckBox chckbxOhneLeine_1;
+	private JTextField txtFehlerHuerden;
+	private JCheckBox chckbxOhneLeineHuerden;
 	private JLabel lblHindernisse;
 	private JLabel lblZeit_1;
 	private JTextField txtZeitHindernisse;
@@ -41,19 +43,22 @@ public class ResultEditPanel extends JPanel {
 	private JLabel label;
 	private JLabel label_1;
 	private JLabel label_2;
-	private JLabel lblPktUo;
-	private JLabel lblPktSlalom;
-	private JLabel lblPktHrden;
+	private JLabel lblPunkteUnterordnung;
+	private JLabel lblPunkteSlalom;
+	private JLabel lblPunkteHuerden;
 	private JLabel label_3;
-	private JLabel lblPktHindernisse;
+	private JLabel lblPunkteHindernisse;
 	private JLabel lblErgebnis;
 	private JLabel lblNewLabel_1;
+	private JLabel lblAktuellerRang_;
 	private JLabel lblAktuellerRang;
-	private JLabel lblAktRang;
 	private JButton btnVorherigesTeam;
-	private JButton btnNchstesTeam;
-	private JButton btnZurcksetzen;
-	private JButton btnStarter;
+	private JButton btnNaechstesTeam;
+	private JButton btnZuruecksetzen;
+	private JButton btnErsterStarter;
+	private JLabel lblSuche;
+	private JTextField txtSuche;
+	private JComboBox comboBoxSortierung;
 
 	/**
 	 * Create the panel.
@@ -117,23 +122,23 @@ public class ResultEditPanel extends JPanel {
 		txtFehlerSlalom.setText("Fehler Slalom");
 		txtFehlerSlalom.setColumns(10);
 		
-		chckbxOhneLeine = new JCheckBox("ohne Leine");
+		chckbxOhneLeineSlalom = new JCheckBox("ohne Leine");
 		
 		lblHrden = new JLabel("H\u00FCrden");
 		
 		lblZeit = new JLabel("Zeit");
 		
-		txtZeitHrden = new JTextField();
-		txtZeitHrden.setText("Zeit H\u00FCrden");
-		txtZeitHrden.setColumns(10);
+		txtZeitHuerden = new JTextField();
+		txtZeitHuerden.setText("Zeit H\u00FCrden");
+		txtZeitHuerden.setColumns(10);
 		
 		lblFehler_1 = new JLabel("Fehler");
 		
-		txtFehlerHrden = new JTextField();
-		txtFehlerHrden.setText("Fehler H\u00FCrden");
-		txtFehlerHrden.setColumns(10);
+		txtFehlerHuerden = new JTextField();
+		txtFehlerHuerden.setText("Fehler H\u00FCrden");
+		txtFehlerHuerden.setColumns(10);
 		
-		chckbxOhneLeine_1 = new JCheckBox("ohne Leine");
+		chckbxOhneLeineHuerden = new JCheckBox("ohne Leine");
 		
 		lblHindernisse = new JLabel("Hindernisse");
 		
@@ -157,134 +162,147 @@ public class ResultEditPanel extends JPanel {
 		
 		label_2 = new JLabel("=");
 		
-		lblPktUo = new JLabel("Pkt UO");
+		lblPunkteUnterordnung = new JLabel("Pkt UO");
 		
-		lblPktSlalom = new JLabel("Pkt Slalom");
+		lblPunkteSlalom = new JLabel("Pkt Slalom");
 		
-		lblPktHrden = new JLabel("Pkt H\u00FCrden");
+		lblPunkteHuerden = new JLabel("Pkt H\u00FCrden");
 		
 		label_3 = new JLabel("=");
 		
-		lblPktHindernisse = new JLabel("Pkt Hindernisse");
+		lblPunkteHindernisse = new JLabel("Pkt Hindernisse");
 		
 		lblErgebnis = new JLabel("ergebnis");
 		
-		lblNewLabel_1 = new JLabel("Ergenis");
+		lblNewLabel_1 = new JLabel("Ergebnis");
 		
-		lblAktuellerRang = new JLabel("aktueller Rang");
+		lblAktuellerRang_ = new JLabel("aktueller Rang");
 		
-		lblAktRang = new JLabel("akt Rang");
+		lblAktuellerRang = new JLabel("akt Rang");
 		
 		btnVorherigesTeam = new JButton("vorheriges Team");
 		
-		btnNchstesTeam = new JButton("n\u00E4chstes Team");
+		btnNaechstesTeam = new JButton("n\u00E4chstes Team");
+		btnNaechstesTeam.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		btnZurcksetzen = new JButton("Zur\u00FCcksetzen");
+		btnZuruecksetzen = new JButton("Zur\u00FCcksetzen");
 		
-		btnStarter = new JButton("1. Starter");
+		btnErsterStarter = new JButton("1. Starter");
+		
+		lblSuche = new JLabel("Suche:");
+		
+		txtSuche = new JTextField();
+		txtSuche.setText("Suche");
+		txtSuche.setColumns(10);
+		
+		comboBoxSortierung = new JComboBox();
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblStartNr)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtStartNr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(txtVorname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtNachname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtAltersklasse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtRufname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtZwinger, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblUnterordnung)
-										.addComponent(lblSlalom)
-										.addComponent(lblHrden)
-										.addComponent(lblHindernisse))
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(lblZeit_1)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(txtZeitHindernisse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.UNRELATED)
-											.addComponent(lblFehler_2)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(txtFehlerHindernisse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(lblNewLabel)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-												.addGroup(groupLayout.createSequentialGroup()
-													.addComponent(txtZeitSlalom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-													.addPreferredGap(ComponentPlacement.UNRELATED)
-													.addComponent(lblFehler)
-													.addPreferredGap(ComponentPlacement.RELATED)
-													.addComponent(txtFehlerSlalom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-												.addComponent(txtPunkteUnterordnung, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-											.addPreferredGap(ComponentPlacement.UNRELATED)
-											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblX)
-												.addComponent(chckbxOhneLeine)))
-										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-											.addComponent(lblNewLabel_1)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+									.addComponent(lblNewLabel_1)
+									.addGroup(groupLayout.createSequentialGroup()
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 											.addGroup(groupLayout.createSequentialGroup()
-												.addComponent(lblZeit)
+												.addComponent(lblStartNr)
 												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txtZeitHrden, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.UNRELATED)
-												.addComponent(lblFehler_1)
+												.addComponent(txtStartNr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+											.addGroup(groupLayout.createSequentialGroup()
+												.addComponent(txtVorname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txtFehlerHrden, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addComponent(txtNachname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(txtAltersklasse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+											.addGroup(groupLayout.createSequentialGroup()
+												.addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(txtRufname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addComponent(txtZwinger, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+											.addGroup(groupLayout.createSequentialGroup()
+												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+													.addGroup(groupLayout.createSequentialGroup()
+														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+															.addComponent(lblSlalom)
+															.addComponent(lblHrden)
+															.addComponent(lblUnterordnung))
+														.addGap(18)
+														.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+															.addComponent(lblNewLabel)
+															.addComponent(lblZeit_1)
+															.addComponent(lblZeit))
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+															.addComponent(txtZeitHindernisse, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
+															.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+																.addComponent(txtZeitHuerden, 0, 0, Short.MAX_VALUE)
+																.addComponent(txtZeitSlalom, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+																.addComponent(txtPunkteUnterordnung, GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))))
+													.addComponent(lblHindernisse))
 												.addPreferredGap(ComponentPlacement.UNRELATED)
-												.addComponent(chckbxOhneLeine_1))
-											.addComponent(lblAktuellerRang)))))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(label_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(label_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-										.addComponent(label, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblPktUo)
-										.addComponent(lblPktSlalom)
-										.addComponent(lblPktHrden)))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(label_3)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblErgebnis)
-										.addComponent(lblPktHindernisse)
-										.addComponent(lblAktRang)))))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnVorherigesTeam)
-							.addGap(142)
-							.addComponent(btnZurcksetzen)
-							.addPreferredGap(ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
-							.addComponent(btnNchstesTeam))
-						.addComponent(btnStarter))
-					.addContainerGap())
+												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+													.addGroup(groupLayout.createSequentialGroup()
+														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+															.addComponent(lblFehler)
+															.addComponent(lblFehler_1)
+															.addComponent(lblFehler_2))
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+															.addComponent(txtFehlerHuerden, GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+															.addComponent(txtFehlerSlalom, GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+															.addComponent(txtFehlerHindernisse, GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+														.addPreferredGap(ComponentPlacement.UNRELATED)
+														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+															.addComponent(chckbxOhneLeineSlalom)
+															.addComponent(chckbxOhneLeineHuerden)))
+													.addComponent(lblX))))
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+											.addComponent(label_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(label_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(label, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(label_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+									.addComponent(lblAktuellerRang_))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addComponent(lblPunkteSlalom)
+									.addComponent(lblPunkteUnterordnung)
+									.addComponent(lblPunkteHuerden)
+									.addComponent(lblPunkteHindernisse)
+									.addComponent(lblAktuellerRang)
+									.addComponent(lblErgebnis)))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(btnVorherigesTeam)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(btnZuruecksetzen, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+								.addGap(171)
+								.addComponent(btnNaechstesTeam))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(lblSuche)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(txtSuche, GroupLayout.PREFERRED_SIZE, 309, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(comboBoxSortierung, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(btnErsterStarter))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblStartNr)
-						.addComponent(txtStartNr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblSuche)
+						.addComponent(txtSuche, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBoxSortierung, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(txtStartNr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblStartNr))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(txtVorname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -296,12 +314,14 @@ public class ResultEditPanel extends JPanel {
 						.addComponent(txtZwinger, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblUnterordnung)
-						.addComponent(txtPunkteUnterordnung, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblX)
-						.addComponent(label)
-						.addComponent(lblPktUo))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(label)
+							.addComponent(lblPunkteUnterordnung))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(lblUnterordnung)
+							.addComponent(txtPunkteUnterordnung, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblX)))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblSlalom)
@@ -309,43 +329,43 @@ public class ResultEditPanel extends JPanel {
 						.addComponent(txtZeitSlalom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblFehler)
 						.addComponent(txtFehlerSlalom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(chckbxOhneLeine)
+						.addComponent(chckbxOhneLeineSlalom)
 						.addComponent(label_1)
-						.addComponent(lblPktSlalom))
+						.addComponent(lblPunkteSlalom))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblHrden)
-						.addComponent(lblZeit)
-						.addComponent(txtZeitHrden, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblFehler_1)
-						.addComponent(txtFehlerHrden, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(chckbxOhneLeine_1)
+						.addComponent(txtZeitHuerden, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_2)
-						.addComponent(lblPktHrden))
+						.addComponent(lblZeit)
+						.addComponent(lblFehler_1)
+						.addComponent(txtFehlerHuerden, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(chckbxOhneLeineHuerden)
+						.addComponent(lblPunkteHuerden))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label_3)
 						.addComponent(lblHindernisse)
 						.addComponent(lblZeit_1)
 						.addComponent(txtZeitHindernisse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblFehler_2)
 						.addComponent(txtFehlerHindernisse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_3)
-						.addComponent(lblPktHindernisse))
-					.addGap(18)
+						.addComponent(lblPunkteHindernisse))
+					.addGap(12)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblErgebnis)
 						.addComponent(lblNewLabel_1))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblAktuellerRang)
-						.addComponent(lblAktRang))
-					.addPreferredGap(ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-					.addComponent(btnStarter)
+						.addComponent(lblAktuellerRang_))
+					.addPreferredGap(ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+					.addComponent(btnErsterStarter)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnVorherigesTeam)
-						.addComponent(btnNchstesTeam)
-						.addComponent(btnZurcksetzen))
+						.addComponent(btnZuruecksetzen)
+						.addComponent(btnNaechstesTeam))
 					.addContainerGap())
 		);
 		setLayout(groupLayout);
