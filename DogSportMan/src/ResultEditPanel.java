@@ -1,5 +1,9 @@
 import javax.swing.JPanel;
+
+import java.awt.EventQueue;
 import java.awt.GridLayout;
+
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -9,36 +13,27 @@ import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import java.awt.Font;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 
 public class ResultEditPanel extends JPanel {
 	private JLabel lblStartNr;
 	private JTextField txtStartNr;
-	private JTextField txtVorname;
-	private JTextField txtNachname;
-	private JTextField txtAltersklasse;
-	private JTextField txtName;
-	private JTextField txtRufname;
-	private JTextField txtZwinger;
 	private JLabel lblUnterordnung;
-	private JTextField txtPunkteUnterordnung;
 	private JLabel lblSlalom;
-	private JTextField txtZeitSlalom;
 	private JLabel lblNewLabel;
 	private JLabel lblFehler;
-	private JTextField txtFehlerSlalom;
 	private JCheckBox chckbxOhneLeineSlalom;
 	private JLabel lblHrden;
 	private JLabel lblZeit;
-	private JTextField txtZeitHuerden;
 	private JLabel lblFehler_1;
-	private JTextField txtFehlerHuerden;
 	private JCheckBox chckbxOhneLeineHuerden;
 	private JLabel lblHindernisse;
 	private JLabel lblZeit_1;
-	private JTextField txtZeitHindernisse;
 	private JLabel lblFehler_2;
-	private JTextField txtFehlerHindernisse;
 	private JLabel lblX;
 	private JLabel label;
 	private JLabel label_1;
@@ -59,7 +54,36 @@ public class ResultEditPanel extends JPanel {
 	private JLabel lblSuche;
 	private JTextField txtSuche;
 	private JComboBox comboBoxSortierung;
+	private JFormattedTextField txtZeitHindernisse;
+	private JFormattedTextField txtZeitHuerden;
+	private JFormattedTextField txtZeitSlalom;
+	private JFormattedTextField txtPunkteUnterordnung;
+	private JFormattedTextField txtFehlerHindernisse;
+	private JFormattedTextField txtFehlerHuerden;
+	private JFormattedTextField txtFehlerSlalom;
+	private JLabel lblVorname;
+	private JLabel lblNachname;
+	private JLabel lblAltersklasse;
+	private JLabel lblNameHund;
+	private JLabel lblRufnameHund;
+	private JLabel lblZwingerHund;
 
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ResultEditPanel panel = new ResultEditPanel();
+					JFrame frame = new JFrame();
+					frame.setContentPane(panel);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
 	/**
 	 * Create the panel.
 	 */
@@ -68,59 +92,18 @@ public class ResultEditPanel extends JPanel {
 		lblStartNr = new JLabel("Start Nr.");
 		
 		txtStartNr = new JTextField();
+		txtStartNr.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		txtStartNr.setEditable(false);
 		txtStartNr.setText("Start Nr.");
 		txtStartNr.setColumns(10);
 		
-		txtVorname = new JTextField();
-		txtVorname.setEditable(false);
-		txtVorname.setText("Vorname");
-		txtVorname.setColumns(10);
-		
-		txtNachname = new JTextField();
-		txtNachname.setEditable(false);
-		txtNachname.setText("Nachname");
-		txtNachname.setColumns(10);
-		
-		txtAltersklasse = new JTextField();
-		txtAltersklasse.setEditable(false);
-		txtAltersklasse.setText("Altersklasse");
-		txtAltersklasse.setColumns(10);
-		
-		txtName = new JTextField();
-		txtName.setEditable(false);
-		txtName.setText("Name");
-		txtName.setColumns(10);
-		
-		txtRufname = new JTextField();
-		txtRufname.setEditable(false);
-		txtRufname.setText("Rufname");
-		txtRufname.setColumns(10);
-		
-		txtZwinger = new JTextField();
-		txtZwinger.setEditable(false);
-		txtZwinger.setText("Zwinger");
-		txtZwinger.setColumns(10);
-		
 		lblUnterordnung = new JLabel("Unterordnung");
 		
-		txtPunkteUnterordnung = new JTextField();
-		txtPunkteUnterordnung.setText("Punkte Unterordnung");
-		txtPunkteUnterordnung.setColumns(10);
-		
 		lblSlalom = new JLabel("Slalom");
-		
-		txtZeitSlalom = new JTextField();
-		txtZeitSlalom.setText("Zeit Slalom");
-		txtZeitSlalom.setColumns(10);
 		
 		lblNewLabel = new JLabel("Zeit");
 		
 		lblFehler = new JLabel("Fehler");
-		
-		txtFehlerSlalom = new JTextField();
-		txtFehlerSlalom.setText("Fehler Slalom");
-		txtFehlerSlalom.setColumns(10);
 		
 		chckbxOhneLeineSlalom = new JCheckBox("ohne Leine");
 		
@@ -128,15 +111,7 @@ public class ResultEditPanel extends JPanel {
 		
 		lblZeit = new JLabel("Zeit");
 		
-		txtZeitHuerden = new JTextField();
-		txtZeitHuerden.setText("Zeit H\u00FCrden");
-		txtZeitHuerden.setColumns(10);
-		
 		lblFehler_1 = new JLabel("Fehler");
-		
-		txtFehlerHuerden = new JTextField();
-		txtFehlerHuerden.setText("Fehler H\u00FCrden");
-		txtFehlerHuerden.setColumns(10);
 		
 		chckbxOhneLeineHuerden = new JCheckBox("ohne Leine");
 		
@@ -144,15 +119,7 @@ public class ResultEditPanel extends JPanel {
 		
 		lblZeit_1 = new JLabel("Zeit");
 		
-		txtZeitHindernisse = new JTextField();
-		txtZeitHindernisse.setText("Zeit Hindernisse");
-		txtZeitHindernisse.setColumns(10);
-		
 		lblFehler_2 = new JLabel("Fehler");
-		
-		txtFehlerHindernisse = new JTextField();
-		txtFehlerHindernisse.setText("Fehler Hindernisse");
-		txtFehlerHindernisse.setColumns(10);
 		
 		lblX = new JLabel("x 0,7");
 		
@@ -196,13 +163,52 @@ public class ResultEditPanel extends JPanel {
 		txtSuche.setColumns(10);
 		
 		comboBoxSortierung = new JComboBox();
+		
+		txtZeitHindernisse = new JFormattedTextField(new DecimalFormat("0.##", new DecimalFormatSymbols()));
+		txtZeitHindernisse.setText("Zeit Hindernisse");
+		
+		txtZeitHuerden = new JFormattedTextField(new DecimalFormat("0.##", new DecimalFormatSymbols()));
+		txtZeitHuerden.setText("Zeit H\u00FCrden");
+		
+		txtZeitSlalom = new JFormattedTextField(new DecimalFormat("0.##", new DecimalFormatSymbols()));
+		txtZeitSlalom.setText("Zeit Slalom");
+		
+		txtPunkteUnterordnung = new JFormattedTextField(new DecimalFormat("0.##", new DecimalFormatSymbols()));
+		txtPunkteUnterordnung.setText("Punkte Unterordnung");
+		
+		txtFehlerHindernisse = new JFormattedTextField(new DecimalFormat("0.##", new DecimalFormatSymbols()));
+		txtFehlerHindernisse.setText("Fehler Hindernisse");
+		
+		txtFehlerHuerden = new JFormattedTextField(new DecimalFormat("0.##", new DecimalFormatSymbols()));
+		txtFehlerHuerden.setText("Fehler H\u00FCrden");
+		
+		txtFehlerSlalom = new JFormattedTextField(new DecimalFormat("0.##", new DecimalFormatSymbols()));
+		txtFehlerSlalom.setText("Fehler Slalom");
+		
+		lblVorname = new JLabel("Vorname");
+		lblVorname.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		
+		lblNachname = new JLabel("Nachname");
+		lblNachname.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		
+		lblAltersklasse = new JLabel("Altersklasse");
+		lblAltersklasse.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		
+		lblNameHund = new JLabel("Name Hund");
+		lblNameHund.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		
+		lblRufnameHund = new JLabel("Rufname Hund");
+		lblRufnameHund.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		
+		lblZwingerHund = new JLabel("Zwinger Hund");
+		lblZwingerHund.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 							.addGroup(groupLayout.createSequentialGroup()
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 									.addComponent(lblNewLabel_1)
@@ -213,19 +219,7 @@ public class ResultEditPanel extends JPanel {
 												.addPreferredGap(ComponentPlacement.RELATED)
 												.addComponent(txtStartNr, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 											.addGroup(groupLayout.createSequentialGroup()
-												.addComponent(txtVorname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txtNachname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txtAltersklasse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-											.addGroup(groupLayout.createSequentialGroup()
-												.addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txtRufname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED)
-												.addComponent(txtZwinger, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-											.addGroup(groupLayout.createSequentialGroup()
-												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 													.addGroup(groupLayout.createSequentialGroup()
 														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 															.addComponent(lblSlalom)
@@ -235,15 +229,14 @@ public class ResultEditPanel extends JPanel {
 														.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 															.addComponent(lblNewLabel)
 															.addComponent(lblZeit_1)
-															.addComponent(lblZeit))
-														.addPreferredGap(ComponentPlacement.RELATED)
-														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-															.addComponent(txtZeitHindernisse, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
-															.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-																.addComponent(txtZeitHuerden, 0, 0, Short.MAX_VALUE)
-																.addComponent(txtZeitSlalom, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-																.addComponent(txtPunkteUnterordnung, GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))))
+															.addComponent(lblZeit)))
 													.addComponent(lblHindernisse))
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+													.addComponent(txtZeitHindernisse)
+													.addComponent(txtZeitHuerden, GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+													.addComponent(txtZeitSlalom, GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+													.addComponent(txtPunkteUnterordnung, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 												.addPreferredGap(ComponentPlacement.UNRELATED)
 												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 													.addGroup(groupLayout.createSequentialGroup()
@@ -252,15 +245,27 @@ public class ResultEditPanel extends JPanel {
 															.addComponent(lblFehler_1)
 															.addComponent(lblFehler_2))
 														.addPreferredGap(ComponentPlacement.RELATED)
-														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-															.addComponent(txtFehlerHuerden, GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-															.addComponent(txtFehlerSlalom, GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-															.addComponent(txtFehlerHindernisse, GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
-														.addPreferredGap(ComponentPlacement.UNRELATED)
+														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+															.addComponent(txtFehlerHindernisse, 0, 0, Short.MAX_VALUE)
+															.addComponent(txtFehlerHuerden, 0, 0, Short.MAX_VALUE)
+															.addComponent(txtFehlerSlalom, GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
+														.addPreferredGap(ComponentPlacement.UNRELATED, 18, Short.MAX_VALUE)
 														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 															.addComponent(chckbxOhneLeineSlalom)
 															.addComponent(chckbxOhneLeineHuerden)))
-													.addComponent(lblX))))
+													.addComponent(lblX)))
+											.addGroup(groupLayout.createSequentialGroup()
+												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+													.addComponent(lblNameHund, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+													.addComponent(lblVorname, GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+												.addPreferredGap(ComponentPlacement.UNRELATED)
+												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+													.addComponent(lblRufnameHund, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+													.addComponent(lblNachname, GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
+												.addPreferredGap(ComponentPlacement.UNRELATED)
+												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+													.addComponent(lblZwingerHund)
+													.addComponent(lblAltersklasse))))
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 											.addComponent(label_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -271,8 +276,8 @@ public class ResultEditPanel extends JPanel {
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 									.addComponent(lblPunkteSlalom)
-									.addComponent(lblPunkteUnterordnung)
 									.addComponent(lblPunkteHuerden)
+									.addComponent(lblPunkteUnterordnung)
 									.addComponent(lblPunkteHindernisse)
 									.addComponent(lblAktuellerRang)
 									.addComponent(lblErgebnis)))
@@ -286,7 +291,7 @@ public class ResultEditPanel extends JPanel {
 								.addComponent(lblSuche)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(txtSuche, GroupLayout.PREFERRED_SIZE, 309, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGap(89)
 								.addComponent(comboBoxSortierung, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)))
 						.addComponent(btnErsterStarter))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -305,14 +310,14 @@ public class ResultEditPanel extends JPanel {
 						.addComponent(lblStartNr))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtVorname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtNachname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtAltersklasse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblVorname)
+						.addComponent(lblNachname)
+						.addComponent(lblAltersklasse))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtRufname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtZwinger, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblNameHund)
+						.addComponent(lblRufnameHund)
+						.addComponent(lblZwingerHund))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -320,37 +325,37 @@ public class ResultEditPanel extends JPanel {
 							.addComponent(lblPunkteUnterordnung))
 						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 							.addComponent(lblUnterordnung)
-							.addComponent(txtPunkteUnterordnung, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(lblX)))
+							.addComponent(lblX)
+							.addComponent(txtPunkteUnterordnung, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblSlalom)
 						.addComponent(lblNewLabel)
-						.addComponent(txtZeitSlalom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblFehler)
-						.addComponent(txtFehlerSlalom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(chckbxOhneLeineSlalom)
 						.addComponent(label_1)
+						.addComponent(txtZeitSlalom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtFehlerSlalom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblPunkteSlalom))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblHrden)
-						.addComponent(txtZeitHuerden, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label_2)
 						.addComponent(lblZeit)
 						.addComponent(lblFehler_1)
-						.addComponent(txtFehlerHuerden, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(chckbxOhneLeineHuerden)
+						.addComponent(txtZeitHuerden, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtFehlerHuerden, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblPunkteHuerden))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_3)
 						.addComponent(lblHindernisse)
 						.addComponent(lblZeit_1)
-						.addComponent(txtZeitHindernisse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblFehler_2)
-						.addComponent(txtFehlerHindernisse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblPunkteHindernisse))
+						.addComponent(lblPunkteHindernisse)
+						.addComponent(txtZeitHindernisse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtFehlerHindernisse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(12)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblErgebnis)
